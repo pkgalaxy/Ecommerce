@@ -1,0 +1,73 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>Home</title>
+{% endblock %}
+
+{% block mainn %}
+<main class="cart-main">
+    <!-- ... (other HTML code) -->
+
+<div class="class-item-outer">
+    {% if cart_items %}
+    {% for i in cart_items %}
+    <div class="cart-items">
+        <div class="cart-item-image">            
+            <a href="{% url 'product_detail' i.product.id %}">
+                <img style="height: 100px; width: 80px;" src="{{ i.product.product_image.url }}" alt="">              
+            </a>
+        </div>
+        <div>
+            <p style="color: white;">{{ i.product.product_name }}</p>
+        </div>
+        <div class="cart-item-qty">
+            <!-- ###################### -->
+            <form action="{% url 'view_cart' %}" method="POST">
+                {% csrf_token %}
+                <div class="cart-item">
+                    <input type="number" name="quantity-{{ i.id }}" value="{{ i.quantity }}" min="1" max="10" size="10" >
+                    <input type="submit" value="Update Cart">
+                </div>
+            </form>
+
+          
+            <!-- ########################## -->
+        </div>
+        <div>
+            <h3 style="color: white;">{{ i.product.product_price }}</h3>
+        </div>
+        <div>
+            <h3 style="color: white;">{{ i.total_price }}</h3>
+        </div>
+        <div class="cart-remove">
+            <a href="{% url 'remove_from_cart' i.id %}"><button class="add-to-cart-button">remove</button></a> 
+        </div>  
+    </div>    
+    {% endfor %}
+</div>
+ <div class="cart-checkout">
+        <!-- <a href="{% url 'checkout'  %}" class="add-to-cart-button">Checkout</a> -->
+        <form method="post" action="{% url 'checkout' %}">
+            {% csrf_token %}
+            <h2>Shipping Information</h2>
+            <label for="shipping_address">Shipping Address:</label>
+            <input type="text" id="shipping_address" name="shipping_address" required><br>
+    
+            <label for="payment_method">Payment Method:</label><br>
+            <select id="payment_method" name="payment_method" required>
+                <option value="credit_card">Credit Card</option>
+                <option value="paypal">PayPal</option>
+            </select><br>
+    
+            <h2>Order Summary</h2>
+            <h2>Total Amount: Rs.{{ total_amount }}</h2><br>
+    
+            <button type="submit" class="add-to-cart-button">Place Order</button>
+        </form>
+    </div>
+    {% else %}
+    <img style="margin-top: 5%;" src="{% static  'img/empty-cart.png' %}" alt="">
+    {% endif %}
+</main>
+{% endblock %}

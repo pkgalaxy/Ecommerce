@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%  block title %}
+<title>Home</title>
+{% endblock %}
+
+{% block mainn %}
+<main class="main">
+    
+    <div class="product-outer-frame">
+        {% for i in data %}
+        <div class="product-frame">
+            <div class="product-image">
+                <a href="{% url 'product_detail' i.id %}"><img style="height: 300px; width: 257px;" src="{{ i.product_image.url }}" alt=""></a>
+            </div>
+            <div class="price-section">
+                <strong>{{ i.product_name }}</strong>
+                <strong>{{ i.product_price }}</strong>
+            </div>
+        </div>
+        {% endfor  %} 
+        
+        {% if zata %}
+        {% for i in zata %}
+        <div class="product-frame">
+            <div class="product-image">
+                <a href="{% url 'product_detail' i.id %}"><img style="height: 312px; width: 257px;" src="{{ i.product_image.url }}" alt=""></a>
+            </div>
+            <div class="price-section">
+                <strong>{{ i.product_price }}</strong>
+                <strong>{{ i.product_name }}</strong>
+            </div>
+        </div>
+        {% endfor  %}
+        {% endif %}
+    </div>
+ 
+
+
+
+</main>
+{% endblock %}

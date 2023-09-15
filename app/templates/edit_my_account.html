@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%  block title %}
+<title>My Account</title>
+{% endblock %}
+
+{% block mainn %}
+
+<main class="mainn">
+    
+    <div class="product-outer-frame">
+        <div style="margin-top: 5%;">
+        <form  method="POST" action="{% url 'edit_my_account' %}" >
+            {% csrf_token %}
+            {{ form.as_p }}    
+            <input class="btn" type="submit" value="Update" size="40"><br><br>   
+        </form>
+        </div> 
+    </div>
+</main>
+
+
+{% endblock %}

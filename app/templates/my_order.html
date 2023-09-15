@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+<title>My Orders</title>
+{% endblock %}
+
+{% block mainn %}
+<h2>Order Summary</h2>
+<main class="cart-main">  
+    <div class="class-item-outer">
+        {% for order in orders %}
+        <div class="cart-items">
+            <div class="cart-item-image">             
+                    {% for i in order.items.all %}
+                    <a href="{% url 'product_detail' i.id %}"><img style="height: 60px; width: 50px;" src="{{ i.product_image.url }}" alt=""> </a>
+                    {% endfor %}                    
+            </div>
+            <div>
+                <p style="color: white;"></p>
+            </div>
+            <div>
+                {% for i in order.items.all %}
+                <h6 style="color: white; display: inline;">{{ i.product_name }}</h6>
+                <h6 style="color: white; display: inline;">   RS. {{ i.product_price }}</h6>
+                {% endfor %}
+            </div>
+            <div>
+            {% with bill=order.bill_set.first %}
+            {% if bill %}
+             <h3><a href="{% url 'generate_pdf_bill' order.id %}">Download Bill PDF</a></h3> 
+            {% endif %}
+            {% endwith %}
+            </div>
+            <div class="cart-remove">
+                <p style="color: beige;">Order Date: {{ order.order_date }}</p>
+                <p style="color:aquamarine">Total Amount: {{ order.total_amount }}</p>
+               <p style="color: yellow;">delivery status...</p>
+            </div> 
+        </div> 
+        {% endfor %}    
+    </div>  
+</main>
+{% endblock %}

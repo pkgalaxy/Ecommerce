@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup</title>
+    <link rel="stylesheet" href="{% static 'css/login-signup.css' %}">
+</head>
+<body>
+    <div class="outer">
+        <div class="frame">
+            <form action="" method="POST">
+                {% csrf_token %}
+                <h2>Create Account</h2><br>
+                <input type="text" placeholder="username" name="username" required><br><br>
+                <p>Enter a valid email address</p><br>
+                <input type="email" placeholder="valid email" name="email" required><br><br>
+                <input type="password" placeholder="password" name="password1" required><br><br>
+                <input type="password" placeholder="password again" name="password2" required><br><br>
+                <button type="submit">Sign up</button><br><br>
+                <p>Already have an account? <a href="{% url 'login' %}" class="ml-2">Login here</a></p>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

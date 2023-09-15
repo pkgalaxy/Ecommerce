@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%  block title %}
+<title>Home</title>
+{% endblock %}
+
+{% block mainn %}
+<div style="height: 1000px; text-align: center; margin-top: 2%;">
+    <h1>Order Placed</h1> 
+    <p>Thank you for your order. Your order has been successfully placed.</p>
+    <br>
+    <br>
+    <h3>Bill has been sent on your Email</h3>
+    <p>See <a style="color: blue" href="{% url 'my_order' %}">My Order</a></p>
+</div>
+  
+{% endblock %}

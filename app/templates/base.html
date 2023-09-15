@@ -1,0 +1,108 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+    {% endblock %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <!-- header start -->
+    <header>
+        <!-- box-1 -->
+        <div class="nav-bar">
+            <div class="box-1 border">
+                <a href="{% url 'home' %}"><img src="{% static 'img/amazon-logo.png' %}"></a>
+            </div>
+            <!-- box 2 -->
+            {% if user.is_authenticated %}
+            <div class="box-4 border">
+                    <div class="hellouser">
+                        <p class="box-4-account">Hi.. {{user.username}}</p>                   
+                    </div> 
+            </div>
+            {% endif %}
+            <!-- box-3  Search --> 
+            <div class="nav-search">
+                <form style="display: flex; justify-content: center;" action="{% url 'search_product' %}" method="get">
+                <input type="text"  name="q" class="searchbar" placeholder="Search Products">
+                <div class="search-icon">
+                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </div>
+            </form>
+            </div>
+       
+
+            {% if user.is_authenticated %}
+            <div class="box-4 border">
+                <a href="{% url 'my_account' %}">
+                    <div class="hellouser">
+                        <p class="box-4-account">My Acount</p>                   
+                    </div>
+                </a>
+            </div>
+              <!-- box-5 -->
+              <div class="box-5 border">
+                <a href="{% url 'my_order' %}">
+                    <div>
+                        <p class="box-4-account">My Orders</p>
+                    </div>
+                </a>
+            </div>
+            <div class="box-4 border">
+                <div class="hellouser">
+                    <a href="{% url 'logout' %}"><p class="box-4-account">Log out</p></a>                   
+                </div>
+            </div>
+            {% else %}   
+            <div class="box-4 border">
+                <div class="hellouser">
+                    <a href="{% url 'login' %}"><p class="box-4-account">Log in</p></a>                   
+                </div>
+            </div>         
+            {% endif %}
+          
+            <!-- box-6 -->
+            <div class="box-6 border">
+                <a href="">
+                    <div class="box-6-items">
+                        <a href="{% url 'view_cart' %}"><span> <i class="fa-solid fa-cart-shopping"></i></span></a>
+                        <p>Cart</p>
+                       <!-- <p>4</p> -->
+                    </div>
+                </a>
+            </div>
+
+        </div>
+
+    </header>
+    <!-- header end  -->
+
+
+<!-- below header start-->
+    <div class="belowheader">
+        <div class="belowheader-items">
+            <a href="{% url 'search_product' %}?name=Shoe"><div class="primedaydeal border" style="display: flex; align-items: center; height: 35px;" ><p>Shoe</p></div></a>
+            <a href="{% url 'search_product' %}?name=laptop"><div class="primedaydeal border" style="display: flex; align-items: center; height: 35px;" ><p>Laptop</p></div></a>
+            <a href="{% url 'search_product' %}?name=phone"><div class="primedaydeal border" style="display: flex; align-items: center; height: 35px;" ><p>Phone</p></div></a>
+            <a href="{% url 'search_product' %}?name=Shirt"><div class="primedaydeal border" style="display: flex; align-items: center; height: 35px;" ><p>Shirt</p></div></a>
+                       
+        </div>
+    </div>
+    <!-- end header  -->
+    {% block mainn %}
+
+
+    
+    {% endblock %}
+    <footer>    
+             <div class="copyright">
+               <p> Site by Pankaj</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

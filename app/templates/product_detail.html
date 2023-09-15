@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%  block title %}
+<title>Product details</title>
+{% endblock %}
+
+{% block mainn %}
+
+
+<main class="single-main">
+    <div class="single-product-outer-frame">
+        <div class="single-product-frame">
+            <div class="single-product-image">
+                <img style="height: 412px; width: 360px;" src="{{ data.product_image.url }}" alt="">
+            </div>
+            <div class="single-product-detail">
+                <div style="height: 80%;">
+                    <strong>{{ data.product_price }}</strong><br><br>
+                    <p>{{ data.product_details }}</p><br><br>
+                </div>
+                <div style="height: 20%; margin-left: 10%; min-width: 200px;"> 
+                     
+                    <form method="POST" action="{% url 'add_to_cart' data.id %}">
+                        {% csrf_token %}
+                        <input hidden type="number" name="quantity" value="1" min="1">
+                        <button class="add-to-cart-button" type="submit">Add to cart</button>
+                    </form>
+                </div>            
+            </div>    
+        </div>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{%  block title %}
+<title>My account</title>
+{% endblock %}
+
+{% block mainn %}
+<main class="mainn">
+    <h2 style="text-align: center;">My Account Details</h2><br>
+            <div class="my-account-frame">
+                <div>
+                    {% if user.is_authenticated %}
+                    <h3>Name: {{ user.username }}</h3><br>
+                    <strong>Email: </strong>{{ user.email}}<br><br>
+                    {% endif %}
+                    
+                </div>
+            </div>
+        
+</main>
+{% endblock %}
