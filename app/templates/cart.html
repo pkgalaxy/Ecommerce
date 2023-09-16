@@ -15,11 +15,11 @@
     <div class="cart-items">
         <div class="cart-item-image">            
             <a href="{% url 'product_detail' i.product.id %}">
-                <img style="height: 100px; width: 80px;" src="{{ i.product.product_image.url }}" alt="">              
+                <img class="cart-image" style="height: 100px; width: 80px;" src="{{ i.product.product_image.url }}" alt="">              
             </a>
         </div>
         <div>
-            <p style="color: white;">{{ i.product.product_name }}</p>
+            <p class="cart-product-name" style="color: white;">{{ i.product.product_name }}</p>
         </div>
         <div class="cart-item-qty">
             <!-- ###################### -->
@@ -65,7 +65,7 @@
     
             <button type="submit" class="add-to-cart-button">Place Order</button>
         </form>
-    </div>
+ </div>
     {% else %}
     <img style="margin-top: 5%;" src="{% static  'img/empty-cart.png' %}" alt="">
     {% endif %}

@@ -8,6 +8,8 @@
     {% endblock %}
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive_tab.css' %}">
+    <link rel="stylesheet" href="{% static 'css/responsive.css' %}">
 </head>
 <body>
     <!-- header start -->
@@ -70,7 +72,7 @@
                 <a href="">
                     <div class="box-6-items">
                         <a href="{% url 'view_cart' %}"><span> <i class="fa-solid fa-cart-shopping"></i></span></a>
-                        <p>Cart</p>
+                        <p class="box-4-account">Cart</p>
                        <!-- <p>4</p> -->
                     </div>
                 </a>
@@ -85,6 +87,7 @@
 <!-- below header start-->
     <div class="belowheader">
         <div class="belowheader-items">
+            <a href="{% url 'home' %}"><div class="primedaydeal border" style="display: flex; align-items: center; height: 35px; color: white;" ><p>HOME</p></div></a>
             <a href="{% url 'search_product' %}?name=Shoe"><div class="primedaydeal border" style="display: flex; align-items: center; height: 35px;" ><p>Shoe</p></div></a>
             <a href="{% url 'search_product' %}?name=laptop"><div class="primedaydeal border" style="display: flex; align-items: center; height: 35px;" ><p>Laptop</p></div></a>
             <a href="{% url 'search_product' %}?name=phone"><div class="primedaydeal border" style="display: flex; align-items: center; height: 35px;" ><p>Phone</p></div></a>

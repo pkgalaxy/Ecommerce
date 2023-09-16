@@ -10,3 +10,10 @@ justify-content: center;
 margin-top: 10%;
 }
 
+button {
+    padding: 10px;
+    background-color: rgb(58, 61, 75);
+    color: white;
+    border: none;
+    border-radius: 5px;
+}

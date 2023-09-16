@@ -14,7 +14,8 @@
                 {% csrf_token %}
                 <h2>Create Account</h2><br>
                 <input type="text" placeholder="username" name="username" required><br><br>
-                <p>Enter a valid email address</p><br>
+                <p>Enter valid email address to get bill.</p>
+                <p>unexist email will not get bill on email.</p><br>
                 <input type="email" placeholder="valid email" name="email" required><br><br>
                 <input type="password" placeholder="password" name="password1" required><br><br>
                 <input type="password" placeholder="password again" name="password2" required><br><br>

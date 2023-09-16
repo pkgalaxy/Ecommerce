@@ -19,14 +19,22 @@
                     <strong>{{ data.product_price }}</strong><br><br>
                     <p>{{ data.product_details }}</p><br><br>
                 </div>
-                <div style="height: 20%; margin-left: 10%; min-width: 200px;"> 
-                     
+
+                <div style="height: 20%; margin-left: 10%; min-width: 200px;">     
                     <form method="POST" action="{% url 'add_to_cart' data.id %}">
                         {% csrf_token %}
                         <input hidden type="number" name="quantity" value="1" min="1">
                         <button class="add-to-cart-button" type="submit">Add to cart</button>
                     </form>
-                </div>            
+                </div>
+                <br>           
+                <br>           
+                <br>           
+                <br>           
+                <br>           
+                <br>           
+                <br>           
+                <br>           
             </div>    
         </div>
     </div>
